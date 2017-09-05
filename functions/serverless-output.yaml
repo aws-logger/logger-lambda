@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  PostFunction:
+    Properties:
+      CodeUri: s3://aws-logger-deployments/logger-lambda.zip
+      Environment:
+        Variables:
+          LOG_STREAM_NAME: aws-logger-delivery-stream
+      Events:
+        GetResource:
+          Properties:
+            Method: post
+            Path: /logs
+          Type: Api
+      Handler: logEvents.handler
+      Role: arn:aws:iam::764954741168:role/logger
+      Runtime: nodejs6.10
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31
