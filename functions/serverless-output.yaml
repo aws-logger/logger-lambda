@@ -13,7 +13,7 @@ Resources:
             Path: /logs
           Type: Api
       Handler: logEvents.handler
-      Role: arn:aws:iam::764954741168:role/logger
+      Role: arn:aws:iam::764954741168:role/aws-logger-lambda
       Runtime: nodejs6.10
     Type: AWS::Serverless::Function
 Transform: AWS::Serverless-2016-10-31
