@@ -3,12 +3,14 @@ var AWS = require('aws-sdk');
 var fh = new AWS.Firehose();
 
 
- funct(record){
+ var putToStream=function(record){
    fh.putRecord({
      DeliveryStreamName:process.env.LOG_STREAM_NAME,
      Record:{Data:new Buffer(JSON.stringify(record)+"\n")}
    });
- }
+ };
+
+
   exports.handler = (event, context, callback) => {
  if (typeof context.identity !== 'undefined') {
        console.log('Cognito identity ID =', context.identity.cognitoIdentityId);
